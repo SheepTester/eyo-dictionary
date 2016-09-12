@@ -91,5 +91,5 @@ input[disabled]::-webkit-input-placeholder {
 	box-shadow: 0 0 3px rgba(0,0,0,0.5);
 }
 body > ul > li:last-child {
-	padding-bottom: 30px;
+	margin-bottom: 30px;
 }
