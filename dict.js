@@ -7,7 +7,7 @@ This is where the dictionary is stored.
 var dict=[
 ["is am are equals be","se[noun]"],
 ["exist existence","se",true],
-["should, recommend, recommendation, tip","ute[infinitive]",true],
+["should recommend recommendation tip","ute[infinitive]",true],
 ["warn","inute[infinitive]",true],
 ["can ability able","pote[infinitive]",true],
 ["must rule guideline required","opore[infinitive]",true],
