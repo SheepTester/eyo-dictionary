@@ -24,15 +24,18 @@ document.querySelector("#eyo").addEventListener("blur", function(){
 });
 document.querySelector("#eng").onchange=document.querySelector("#eng").onkeyup = function() {
   search(document.querySelector("#eng").value.toLowerCase(),0);
-  document.querySelector("#eng").value=document.querySelector("#eng").value.replace(/\W/g, "");
 };
 document.querySelector("#eyo").onchange=document.querySelector("#eyo").onkeyup = function() {
   search(document.querySelector("#eyo").value.toLowerCase(),1);
-  document.querySelector("#eyo").value=document.querySelector("#eyo").value.replace(/\W/g, "");
 };
 function search(query,id) {
   document.querySelector("ul").innerHTML="";
-  if (!/\S/.test(query)) {
+  if (id==0) {
+    document.querySelector("#eng").value=document.querySelector("#eng").value.replace(/\W/g, "");
+  } else {
+    document.querySelector("#eyo").value=document.querySelector("#eyo").value.replace(/\W/g, "");
+  }
+  if (query=="") {
     document.querySelector("ul").innerHTML+="<li id='noQuery'><div>Search up words in the input boxes at the top!</div></li>";
     document.querySelector(id?"#eyo":"#eng").value="";
   } else {
