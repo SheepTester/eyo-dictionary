@@ -7,37 +7,51 @@ This is where the main magic happens. That's about it.
 i.includes(value)
 */
 document.querySelector("#eng").addEventListener("focus", function(){
-	document.querySelector("#eyo").setAttribute("disabled","true");
+  document.querySelector("#eyo").setAttribute("disabled","true");
 });
 document.querySelector("#eng").addEventListener("blur", function(){
-	if (document.querySelector("#eng").value=="") {
-		document.querySelector("#eyo").removeAttribute("disabled");
-	}
+  if (document.querySelector("#eng").value=="") {
+   document.querySelector("#eyo").removeAttribute("disabled");
+  }
 });
 document.querySelector("#eyo").addEventListener("focus", function(){
-	document.querySelector("#eng").setAttribute("disabled","true");
+  document.querySelector("#eng").setAttribute("disabled","true");
 });
 document.querySelector("#eyo").addEventListener("blur", function(){
-	if (document.querySelector("#eyo").value=="") {
-		document.querySelector("#eng").removeAttribute("disabled");
-	}
+  if (document.querySelector("#eyo").value=="") {
+    document.querySelector("#eng").removeAttribute("disabled");
+  }
 });
 document.querySelector("#eng").onchange=document.querySelector("#eng").onkeyup = function() {
-	search(document.querySelector("#eng").value.toLowerCase(),0);
+  search(document.querySelector("#eng").value.toLowerCase(),0);
 };
 document.querySelector("#eyo").onchange=document.querySelector("#eyo").onkeyup = function() {
-	search(document.querySelector("#eyo").value.toLowerCase(),1);
+  search(document.querySelector("#eyo").value.toLowerCase(),1);
 };
 function search(query,id) {
-	document.querySelector("ul").innerHTML="";
-	if (!/\S/.test(query)) {
-		document.querySelector("ul").innerHTML+="<li id='noQuery'><div>Search up words in the input boxes at the top!</div></li>";
-		document.querySelector(id?"#eyo":"#eng").value="";
-	} else {
-		for (var i=0;i<dict.length;i++){
-			if (new RegExp(query,"i").test(dict[i][id])) {
-				document.querySelector("ul").innerHTML+="<li><div class='en'>"+dict[i][0]+"</div><div class='ey'>"+dict[i][1]+(dict[i][2]?" *":"")+"</div></li>";
-			}
-		}
-	}
+  document.querySelector("ul").innerHTML="";
+  if (!/\S/.test(query)) {
+    document.querySelector("ul").innerHTML+="<li id='noQuery'><div>Search up words in the input boxes at the top!</div></li>";
+    document.querySelector(id?"#eyo":"#eng").value="";
+  } else {
+    for (var i=0;i<dict.length;i++){
+      var src=dict[i][id];
+      if (new RegExp(query,"i").test(src)) {
+        var s="<div class='en'>"+dict[i][0]+"</div><div class='ey'>"+dict[i][1]+(dict[i][2]?" *":"")+"</div>";
+        if (new RegExp(" "+query+" ","i").test(src)||src.indexOf(query+" ")==0||src.indexOf(" "+query)==src.length-(" "+query).length) {
+          document.querySelector("ul").innerHTML="<li class='bestMatch'>"+s+"</li>"+document.querySelector("ul").innerHTML;
+        } else if (src.indexOf(query)==0||new RegExp(" "+query,"i").test(src)) {
+          if (document.getElementsByClassName("bestMatch").length==0) {
+            document.querySelector("ul").innerHTML="<li class='gettingThere'>"+s+"</li>"+document.querySelector("ul").innerHTML;
+          } else {
+            var t=document.createElement("li");
+            t.innerHTML=s;
+            document.querySelector(".bestMatch:last-child").parentNode.insertBefore(t, document.querySelector(".bestMatch:last-child").nextSibling);
+          }
+        } else {
+          document.querySelector("ul").innerHTML+="<li>"+s+"</li>";
+        }
+      }
+    }
+  }
 }
