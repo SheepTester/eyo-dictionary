@@ -6,12 +6,6 @@ This is where the main magic happens. That's about it.
 /value/ig
 i.includes(value)
 */
-document.querySelector("#eng").onchange = document.querySelector("#eng").onkeyup = document.querySelector("#eng").onkeydown = function() {
-  document.querySelector("#eng").value=document.querySelector("#eng").value.replace(/\W/g, "");
-}
-document.querySelector("#eyo").onchange = document.querySelector("#eyo").onkeyup = document.querySelector("#eyo").onkeydown = function() {
-  document.querySelector("#eyo").value=document.querySelector("#eyo").value.replace(/\W/g, "");
-}
 document.querySelector("#eng").addEventListener("focus", function(){
   document.querySelector("#eyo").setAttribute("disabled","true");
 });
@@ -30,9 +24,11 @@ document.querySelector("#eyo").addEventListener("blur", function(){
 });
 document.querySelector("#eng").onchange=document.querySelector("#eng").onkeyup = function() {
   search(document.querySelector("#eng").value.toLowerCase(),0);
+  document.querySelector("#eng").value=document.querySelector("#eng").value.replace(/\W/g, "");
 };
 document.querySelector("#eyo").onchange=document.querySelector("#eyo").onkeyup = function() {
   search(document.querySelector("#eyo").value.toLowerCase(),1);
+  document.querySelector("#eyo").value=document.querySelector("#eyo").value.replace(/\W/g, "");
 };
 function search(query,id) {
   document.querySelector("ul").innerHTML="";
