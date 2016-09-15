@@ -30,7 +30,7 @@ document.querySelector("#eyo").onchange=document.querySelector("#eyo").onkeyup =
 };
 function search(query,id) {
   document.querySelector("ul").innerHTML="";
-  if (id==0) {
+  if (id==0||/\W/g.test(query)) {
     document.querySelector("#eng").value=document.querySelector("#eng").value.replace(/\W/g, "");
   } else {
     document.querySelector("#eyo").value=document.querySelector("#eyo").value.replace(/\W/g, "");
