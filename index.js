@@ -58,3 +58,11 @@ function search(query,id) {
     document.querySelector("ul").innerHTML=bests+gettings+elses;
   }
 }
+document.querySelector("#eng").onclick=function(){
+  document.querySelector("#eyo").value="";
+  document.querySelector("#eng").focus();
+}
+document.querySelector("#eyo").onclick=function(){
+  document.querySelector("#eng").value="";
+  document.querySelector("#eyo").focus();
+}
