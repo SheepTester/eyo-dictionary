@@ -30,10 +30,12 @@ document.querySelector("#eyo").onchange=document.querySelector("#eyo").onkeyup =
 };
 function search(query,id) {
   document.querySelector("ul").innerHTML="";
-  if (id==0||/\W/g.test(query)) {
-    document.querySelector("#eng").value=document.querySelector("#eng").value.replace(/\W/g, "");
-  } else {
-    document.querySelector("#eyo").value=document.querySelector("#eyo").value.replace(/\W/g, "");
+  if (/\W/g.test(query)) {
+    if (id==0) {
+      document.querySelector("#eng").value=document.querySelector("#eng").value.replace(/\W/g, "");
+    } else {
+      document.querySelector("#eyo").value=document.querySelector("#eyo").value.replace(/\W/g, "");
+    }
   }
   if (query=="") {
     document.querySelector("ul").innerHTML+="<li id='noQuery'><div>Search up words in the input boxes at the top!</div></li>";
