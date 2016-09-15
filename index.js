@@ -39,24 +39,20 @@ function search(query,id) {
     document.querySelector("ul").innerHTML+="<li id='noQuery'><div>Search up words in the input boxes at the top!</div></li>";
     document.querySelector(id?"#eyo":"#eng").value="";
   } else {
+    var bests="",gettings="",elses="";
     for (var i=0;i<dict.length;i++){
       var src=dict[i][id];
       if (new RegExp(query,"i").test(src)) {
         var s="<div class='en'>"+dict[i][0]+"</div><div class='ey'>"+dict[i][1]+(dict[i][2]?" *":"")+"</div>";
         if (new RegExp(" "+query+" ","i").test(src)||src.indexOf(query+" ")==0||src.indexOf(" "+query)==src.length-(" "+query).length) {
-          document.querySelector("ul").innerHTML="<li class='bestMatch'>"+s+"</li>"+document.querySelector("ul").innerHTML;
+          bests+="<li class='bestMatch'>"+s+"</li>";
         } else if (src.indexOf(query)==0||new RegExp(" "+query,"i").test(src)) {
-          if (document.getElementsByClassName("bestMatch").length==0) {
-            document.querySelector("ul").innerHTML="<li class='gettingThere'>"+s+"</li>"+document.querySelector("ul").innerHTML;
-          } else {
-            var t=document.createElement("li");
-            t.innerHTML=s;
-            document.querySelector(".bestMatch:last-child").parentNode.insertBefore(t, document.querySelector(".bestMatch:last-child").nextSibling);
-          }
+          gettings+="<li class='gettingThere'>"+s+"</li>";
         } else {
-          document.querySelector("ul").innerHTML+="<li>"+s+"</li>";
+          elses+="<li>"+s+"</li>";
         }
       }
     }
+    document.querySelector("ul").innerHTML=bests+gettings+elses;
   }
 }
