@@ -61,7 +61,7 @@ function search(query,id) {
     }
   }
 }
-document.querySelector("#eng").onclick = function(){
+/*document.querySelector("#eng").onclick = function(){
   document.querySelector("#eyo").value="";
   document.querySelector("#eyo").setAttribute("disabled","true");
   document.querySelector("#eng").setAttribute("disabled","false");
@@ -72,4 +72,4 @@ document.querySelector("#eyo").onclick = function(){
   document.querySelector("#eng").setAttribute("disabled","true");
   document.querySelector("#eyo").setAttribute("disabled","false");
   document.querySelector("#eyo").focus();
-}
+}*/
