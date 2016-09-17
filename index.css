@@ -52,6 +52,7 @@ li div, input[type=text] {
 }
 #noQuery div a {
   color: #5A6F72;
+  text-decoration: none;
 }
 :focus {
   outline: none;
