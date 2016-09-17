@@ -42,7 +42,7 @@ var dict=[
 ["and","a +"],
 ["of","e ~"],
 ["to","i _"],
-["or","o /~"],
+["or","o /"],
 ["eyo/pastTensePrefix","u-"],
 ["eyo/futureTensePrefix","ua-"],
 ["eyo/participleSuffix","-a"],
