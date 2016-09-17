@@ -47,6 +47,12 @@ li div, input[type=text] {
   width: 100%;
   margin-top: 30vh;
 }
+#noQuery div span {
+  font-size: 20px;
+}
+#noQuery div a {
+  color: #5A6F72;
+}
 :focus {
   outline: none;
 }
