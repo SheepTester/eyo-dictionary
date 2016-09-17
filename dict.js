@@ -217,4 +217,6 @@ var dict=[
 ["age","aet"],
 ["bread","pan"],
 ["word","sern"],
+["attract appeal interest","konpe",true],
+["bore boredom","inkonpe",true],
 ]
