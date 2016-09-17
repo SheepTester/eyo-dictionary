@@ -40,7 +40,7 @@ function search(query,id) {
   if (query=="") {
     document.querySelector("ul").innerHTML+="<li id='noQuery'><div>Search up words in the input boxes at the top!</div></li>";
     document.querySelector(id?"#eyo":"#eng").value="";
-  } else {
+  } else if (isNaN(Number(query))) {
     var bests="",gettings="",elses="";
     for (var i=0;i<dict.length;i++){
       var src=dict[i][id];
@@ -59,6 +59,18 @@ function search(query,id) {
     if (document.querySelector("ul").innerHTML=="") {
       document.querySelector("ul").innerHTML+="<li id='noQuery'><div>Suggest new words <a href='https://github.com/SheepTester/eyo-dictionary/issues'>here</a>!<br><span>You can even make the Eyo words yourself as long as verbs end with an E and other words don't and that the words are only made up of the letters AEIOUDKNPRST.</span></div></li>";
     }
+  } else {
+    var bests="",q="(";
+    for (var i=0;i<query.length;i++){
+      q+=query[i]+"|";
+    }
+    q=q.slice(0,-1)+")";
+    for (var i=0;i<dict.length;i++){
+      if (new RegExp(q,"i").test(dict[i][id])) {
+        bests+="<li class='bestMatch'><div class='en'>"+dict[i][0]+"</div><div class='ey'>"+dict[i][1]+(dict[i][2]?" *":"")+"</div></li>";
+      }
+    }
+    document.querySelector("ul").innerHTML=bests;
   }
 }
 /*document.querySelector("#eng").onclick = function(){
