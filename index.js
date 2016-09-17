@@ -56,13 +56,20 @@ function search(query,id) {
       }
     }
     document.querySelector("ul").innerHTML=bests+gettings+elses;
+    if (document.querySelector("ul").innerHTML=="") {
+      document.querySelector("ul").innerHTML+="<li id='noQuery'><div>Suggest new words <a href='https://github.com/SheepTester/eyo-dictionary/issues'>here</a>!<br><span>You can even make the Eyo words yourself as long as verbs end with an E and other words don't and that the words are only made up of the letters AEIOUDKNPRST.</span></div></li>";
+    }
   }
 }
-document.querySelector("#eng").onclick=function(){
+document.querySelector("#eng").onclick = function(){
   document.querySelector("#eyo").value="";
+  document.querySelector("#eyo").setAttribute("disabled","true");
+  document.querySelector("#eng").setAttribute("disabled","false");
   document.querySelector("#eng").focus();
 }
-document.querySelector("#eyo").onclick=function(){
+document.querySelector("#eyo").onclick = function(){
   document.querySelector("#eng").value="";
+  document.querySelector("#eng").setAttribute("disabled","true");
+  document.querySelector("#eyo").setAttribute("disabled","false");
   document.querySelector("#eyo").focus();
 }
