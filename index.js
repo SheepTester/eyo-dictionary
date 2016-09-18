@@ -64,7 +64,11 @@ function search(query,id) {
   } else {
     var bests="",q="(";
     for (var i=0;i<query.length;i++){
-      q+=query[i]+"|";
+      if (query[i]==".") {
+        q+="\.|";
+      } else {
+        q+=query[i]+"|";
+      }
     }
     q=q.slice(0,-1)+")";
     for (var i=0;i<dict.length;i++){
