@@ -29,12 +29,14 @@ document.querySelector("#eyo").onchange=document.querySelector("#eyo").onkeyup =
   search(document.querySelector("#eyo").value.toLowerCase(),1);
 };
 function search(query,id) {
+  query=query.toLowerCase();
   document.querySelector("ul").innerHTML="";
-  if (/\W/g.test(query)) {
+  if (/[^\w-.]/g.test(query)) {
+    query=query.replace(/[^\w-.]/g, "");
     if (id==0) {
-      document.querySelector("#eng").value=document.querySelector("#eng").value.replace(/\W/g, "");
+      document.querySelector("#eng").value=query;
     } else {
-      document.querySelector("#eyo").value=document.querySelector("#eyo").value.replace(/\W/g, "");
+      document.querySelector("#eyo").value=query;
     }
   }
   if (query=="") {
@@ -43,7 +45,7 @@ function search(query,id) {
   } else if (isNaN(Number(query))) {
     var bests="",gettings="",elses="";
     for (var i=0;i<dict.length;i++){
-      var src=dict[i][id];
+      var src=dict[i][id].toLowerCase();
       if (new RegExp(query,"i").test(src)) {
         var s="<div class='en'>"+dict[i][0]+"</div><div class='ey'>"+dict[i][1]+(dict[i][2]?" *":"")+"</div>";
         if (new RegExp(" "+query+" ","i").test(src)||src.indexOf(query+" ")==0||src.indexOf(" "+query)==src.length-(" "+query).length) {
