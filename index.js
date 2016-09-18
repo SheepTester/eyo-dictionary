@@ -65,14 +65,14 @@ function search(query,id) {
     var bests="",q="(";
     for (var i=0;i<query.length;i++){
       if (query[i]==".") {
-        q+="\.|";
+        q+="\\.|";
       } else {
         q+=query[i]+"|";
       }
     }
     q=q.slice(0,-1)+")";
     for (var i=0;i<dict.length;i++){
-      if (new RegExp(q,"i").test(dict[i][id])) {
+      if (new RegExp(" "+q,"i").test(dict[i][id])) {
         bests+="<li class='bestMatch'><div class='en'>"+dict[i][0]+"</div><div class='ey'>"+dict[i][1]+(dict[i][2]?" *":"")+"</div></li>";
       }
     }
