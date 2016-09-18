@@ -62,7 +62,7 @@ function search(query,id) {
       document.querySelector("ul").innerHTML+="<li id='noQuery'><div>Suggest new words <a href='https://github.com/SheepTester/eyo-dictionary/issues'>here</a>!<br><span>You can even make the Eyo words yourself as long as verbs end with an E and other words don't and that the words are only made up of the letters AEIOUDKNPRST.</span></div></li>";
     }
   } else {
-    var bests="",q="(";
+    var bests="",q="(",query=Number(query).toString();
     for (var i=0;i<query.length;i++){
       if (query[i]==".") {
         q+="\\.|";
@@ -72,7 +72,7 @@ function search(query,id) {
     }
     q=q.slice(0,-1)+")";
     for (var i=0;i<dict.length;i++){
-      if (new RegExp(" "+q,"i").test(dict[i][id])) {
+      if (new RegExp(" "+q,"i").test(dict[i][id])&&dict[i][2]==="") {
         bests+="<li class='bestMatch'><div class='en'>"+dict[i][0]+"</div><div class='ey'>"+dict[i][1]+(dict[i][2]?" *":"")+"</div></li>";
       }
     }
