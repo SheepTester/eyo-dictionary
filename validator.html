@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eyo Word Validator</title>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        margin: 0;
+        background: #eee;
+        font-size: 50px;
+        font-family: 'Roboto', sans-serif;
+        color: #333;
+      }
+      input {
+        border: none;
+        border-radius: 0;
+        background: white;
+        margin: auto;
+        height: 50px;
+        font-size: 50px;
+        font-family: 'Roboto', sans-serif;
+        color: #333;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        border-bottom: 1px solid transparent;
+        text-align: center;
+      }
+      p {
+        margin: auto;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        bottom: 0;
+        text-align: center;
+        height: 15px;
+        font-size: 15px;
+        color: rgba(0,0,0,0.2);
+      }
+      .no:focus {
+        border-bottom-color: #f44336;
+      }
+      .yes:focus {
+        border-bottom-color: #8BC34A;
+      }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  </head>
+  <body>
+    <input type="text" placeholder="Does your word use the Eyo alphabet only?"/>
+    <p>aeiou dknprst</p>
+    
+    <script src="../sheep.js"></script>
+    <script>
+      document.querySelector("input").onchange=document.querySelector("input").onkeyup = function() {
+        document.querySelector("input").className=/[^aeiou dknprst]/gi.test(document.querySelector("input").value)?"no":"yes";
+      };
+    </script>
+  </body>
+</html>
