@@ -38,12 +38,19 @@
         font-size: 15px;
         color: rgba(0,0,0,0.2);
       }
+      input:hover {
+        border-bottom-color: #ddd;
+      }
       .no:focus {
-        border-bottom-color: #f44336;
+        border-bottom-color: #f44336 !important;
       }
       .yes:focus {
-        border-bottom-color: #8BC34A;
+        border-bottom-color: #8BC34A !important;
       }
+      ::-webkit-input-placeholder {color: #333;opacity: 0.3;}
+      ::-moz-placeholder {color: #333;opacity: 0.3;}
+      :-ms-input-placeholder {color: #333;opacity: 0.3;}
+      :-moz-placeholder {color: #333;opacity: 0.3;}
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   </head>
