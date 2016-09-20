@@ -50,7 +50,7 @@ li div, input[type=text] {
 #noQuery div span {
   font-size: 20px;
 }
-#noQuery div a {
+a {
   color: #5A6F72;
   text-decoration: none;
 }
