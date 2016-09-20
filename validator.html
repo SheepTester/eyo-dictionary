@@ -55,8 +55,8 @@
         position: fixed;
         border-radius: 50%;
         opacity: 0;
-        height: 10px;
-        width: 10px;
+        height: 20px;
+        width: 20px;
         top: 100vh;
         background: rgba(255,255,255,0.8);
         animation: flash .3s;
@@ -79,7 +79,7 @@
     <script src="../sheep.js"></script>
     <script>
       document.querySelector("input").onchange=document.querySelector("input").onkeyup = function() {
-        document.querySelector("input").className=/[^aeiou dknprst]/gi.test(document.querySelector("input").value)?"no":"yes";
+        document.querySelector("input").className=/[^aeiou dknprst~]/gi.test(document.querySelector("input").value)?"no":"yes";
       };
       setInterval(function(){
         var s=document.createElement("LI");
