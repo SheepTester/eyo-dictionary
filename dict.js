@@ -219,4 +219,5 @@ var dict=[
 ["word","sern"],
 ["attract appeal interest","konpe",true],
 ["bore boredom","inkonpe",true],
+["island","insud"],
 ]
