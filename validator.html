@@ -73,13 +73,13 @@
   </head>
   <body>
     <input type="text" placeholder="Does your word use the Eyo alphabet only?"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-    <p>aeiou dknprst</p>
+    <p>aeiou knprst</p>
     <ul class="shine"></ul>
-    
+
     <script src="../sheep.js"></script>
     <script>
       document.querySelector("input").onchange=document.querySelector("input").onkeyup = function() {
-        document.querySelector("input").className=/[^aeiou dknprst~]/gi.test(document.querySelector("input").value)?"no":"yes";
+        document.querySelector("input").className=/[^aeiou knprst~]/gi.test(document.querySelector("input").value)?"no":"yes";
       };
       setInterval(function(){
         var s=document.createElement("LI");
